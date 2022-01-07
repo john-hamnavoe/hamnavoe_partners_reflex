@@ -7,7 +7,7 @@ class Task < ApplicationRecord
   belongs_to :assigned_to, class_name: "User", optional: true
   acts_as_list scope: :task_list
 
-  after_save :broadcast_board
+  after_commit :broadcast_board
 
   validates :title, presence: true, length: { maximum: 100 }
 

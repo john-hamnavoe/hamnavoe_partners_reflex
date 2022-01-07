@@ -11,7 +11,8 @@ one:
   is_archived: false
   due_date: 2021-04-16
   organisation: one
-  project: one  
+  project: one
+  position: 1
 
 two:
   task_list: two
@@ -24,4 +25,5 @@ two:
   is_archived: false
   due_date: 2021-04-16
   organisation: two
-  project: two    
+  project: two 
+  position: 1
