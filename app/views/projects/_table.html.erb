@@ -9,6 +9,7 @@
       <%= table_column "End Date" %>      
       <%= table_column "Active?" %>
       <%= table_column %>          
+      <%= table_column %>          
     <% end %>
   <% end %>
   <%= table_body do %>
@@ -21,6 +22,15 @@
         <%= table_data project.start_date  %>
         <%= table_data project.end_date  %>
         <%= table_data project.is_active  %>
+        <%= table_data do %>
+            <% if project == current_user.current_project %>
+              <p>Working Project!</p>
+            <% else %>
+              <%= link_to users_current_project_path(project.id), method: :patch do %>
+                <button class="btn btn-default btn-sm text-pink-500"><i class="fas fa-arrow-right">Switch To</i></button>
+              <% end %>       
+            <% end %>
+        <% end %>
         <%= table_data do %>
           <%= link_to edit_project_path(project.id) do %>
             <button class="btn btn-default btn-sm"><i class="fas fa-edit"></i></button>

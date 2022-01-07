@@ -26,6 +26,15 @@ class ApplicationController < ActionController::Base
 
     redirect_to root_path
   end
+  
+  def user_selected_project!
+    user_in_organisation!
+    return if current_user.current_project.present?
+
+    set_flash_message(:alert, "messages.no_project")
+
+    redirect_to projects_path
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])

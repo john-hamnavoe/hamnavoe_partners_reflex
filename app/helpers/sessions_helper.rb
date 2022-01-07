@@ -8,6 +8,10 @@ module SessionsHelper
     (current_user.id == current_organisation.owner_id) || organisation_membership&.is_admin
   end
 
+  def user_has_project_selected?
+    current_user.current_project.present?
+  end
+
   def session_symbol(name)
     path = request.fullpath.split("/")
     "#{path.second_to_last}_#{path.last}_#{name}"

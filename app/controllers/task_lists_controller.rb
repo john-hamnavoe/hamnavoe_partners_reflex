@@ -3,6 +3,7 @@
 class TaskListsController < ApplicationController
   before_action :authenticate_user!
   before_action :user_in_organisation!
+  before_action :user_selected_project!
 
   def create
     @task_list = repo.create(task_list_params)
