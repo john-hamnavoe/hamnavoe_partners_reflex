@@ -1,0 +1,26 @@
+
+<div class="flex mt-2 mx-4 flex-col" data-controller="task-lists" id="<%= dom_id(task_list) %>" data-id="<%= task_list.id %>">
+  <div class="flex items-center" >
+    <button data-reflex="click->TaskListsReflex#edit" data-id="<%= task_list.id %>"> 
+    <% if task_list.id == @edit_task_list_id %>
+      <input type="text" class="p-1 rounded-sm border-b-4 border-green-500" value="<%= task_list.name %>" data-action="keyup->task-lists#cancelEdit blur->task-lists#cancelEdit"
+      data-reflex="change->TaskListsReflex#update" data-id="<%= task_list.id %>">
+    <% else %>
+      <h4 class="p-1 rounded-sm border-b-4 border-green-500"><%= task_list.name %></h4>
+    <% end %>  
+    </button>
+  </div>
+  <div class="p-2 overflow-y-auto tasks--scrollbar">
+    <div class="flex flex-col mx-1 p-1">
+      <div data-controller="drag" data-drag-group="tasks" data-drag-url="/tasks/:id/move" id="<%= dom_id(task_list) %>" data-id="<%= task_list.id %>">
+        <% task_list.tasks.sort_by(&:position).each do |task| %>
+          <%= render 'tasks/task', task: task %>
+        <% end %>
+      </div>
+    </div>
+      <button data-reflex="click->TasksReflex#new" data-id="<%= task_list.id %>"> 
+        <h4 class="p-1 rounded-sm text-gray-700">+ Add Task</h4>
+      </button>    
+  </div>
+</div>
+

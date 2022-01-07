@@ -1,0 +1,6 @@
+<div class="flex mb-5 overflow-y-hidden" data-controller="drag" data-drag-group="lists" data-drag-url="/task_lists/:id/move" id="<%= dom_id(task_board)+"_show" %>" data-id="<%= task_board.id %>">
+    <% task_board.task_lists.sort_by(&:position).each do |task_list| %>
+      <%= render 'task_lists/task_list', task_list: task_list %>
+    <% end %>
+    <%= render 'task_lists/new', task_board: task_board, task_list: task_list %>
+</div>

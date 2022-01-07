@@ -1,0 +1,24 @@
+
+<% content_for :toolbar_col_1 do %>
+<div class="mt-2 mb-2">
+  <div class="">
+    <%= link_to new_project_path, class: 'btn btn-default' do %>
+      Add Project
+    <% end %>
+  </div>
+</div>
+<% end %>
+<div data-controller="projects"  id='projects' data-reflex-root='#projects'>
+  <div class="shadow mt-2 mb-4">
+    <div class="">
+      <%= render 'shared/index_page_top', edit_instance: nil, reflex: "ProjectsReflex", query: @query, hide_new: true %>
+      <div class="">
+        <%= render "table", projects: @projects, reflex_name: "ProjectsReflex" %>
+      </div>
+    </div>
+    <div class="">
+      <%= render "shared/index_page_paginator", pagy: @pagy, reflex: "ProjectsReflex" %>
+    </div>
+  </div>
+</div>
+

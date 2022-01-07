@@ -1,0 +1,23 @@
+
+<% content_for :search_control_1 do %>
+    <input class="input-checkbox" type="checkbox" <%= "checked" if @include_archived %> id="issueArchived" data-reflex="change->IssuesReflex#change_archive_filter">
+    <label for="issueArchived" class="ml-2 text-gray-200">Include Archived?</label>
+<% end %>
+<div data-controller="issues"  id='issues' data-reflex-root='#issues'>
+  <%= render "shared/page_header", title: "Issues" %>
+  <div class="shadow mt-2 mb-4">
+    <div>
+      <%= render "form" if @issue %>
+      <%= render 'shared/index_page_top', edit_instance: @issue, reflex: "IssuesReflex", query: @query, hide_new: false %>
+      <div>
+        <% hide_css = @issue ? "hidden" : "" %>
+        <div class="<%= hide_css %>">
+          <%= render "table", issues: @issues, reflex_name: "IssuesReflex", include_archived: @include_archived %>
+          <div>
+            <%= render "shared/index_page_paginator", pagy: @pagy, reflex: "IssuesReflex" %>
+          </div>   
+        </div>               
+      </div>
+    </div>
+  </div>
+</div>

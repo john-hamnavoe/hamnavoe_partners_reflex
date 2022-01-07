@@ -1,0 +1,50 @@
+<div data-controller="modal" data-modal-allow-background-close="false"  class="fixed top-0 left-0 w-full h-full" style="background-color: rgba(0, 0, 0, 0.8); z-index: 9998;">
+  <div data-modal-target="container" data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard" class=" animated fadeIn fixed inset-0 overflow-y-auto flex items-center justify-center" style="z-index: 9999;">
+    <!-- Modal Inner Container -->
+    <div class="max-h-screen w-full max-w-lg relative">
+      <!-- Modal Card -->
+      <div class="m-1 bg-white rounded shadow">
+        <div class="p-8">
+          <%= form_with model: @task, html: { data: { controller: "application", action: "ajax:success->application#reload" } } do |f| %>
+            <div class="input-group">
+              <%= f.label :title, class: 'label' %>
+              <%= f.text_field :title, class: 'input', placeholder: 'Enter task title...', required: true %>   
+              <%= f.hidden_field :task_list_id %>                         
+            </div>
+            <div class="input-group">
+              <%= f.label :color, class: 'label' %>
+              <%= f.select :color, options_for_select(colors_for_select, @task.color), { include_blank: true }, {class: 'input'} %>              
+            </div>               
+            <div class="grid grid-cols-2">
+              <div class="input-group pr-2">
+                <%= f.label :story_points, class: 'label' %>
+                <%= f.number_field :story_points, class: 'input', placeholder: 'Enter task story points...' %>              
+              </div>
+              <div class="input-group pl-2">
+                <%= f.label :due_date, class: 'label' %>
+                <%= f.date_field :due_date, class: 'input', placeholder: 'Enter task due date...' %>    
+              </div>
+            </div>        
+            <div class="grid grid-cols-2 mb-1">              
+              <div class="flex items-start">
+                <%= f.check_box :is_complete, class: "input-checkbox" %>
+                <%= f.label "Complete", class: "ml-3 label" %>
+              </div>      
+              <div class="flex items-start">
+                <%= f.check_box :is_billable, class: "input-checkbox" %>
+                <%= f.label "Billable", class: "ml-3 label" %>
+              </div>
+            </div>         
+            <div class="input-group">
+              <%= f.label :description, class: 'label' %>
+              <%= f.text_area :description, class: 'input', placeholder: 'Enter task description...', cols: 80, rows: 8 %>              
+            </div>            
+            <%= f.submit "Save", class: "btn btn-primary" %>
+            <button type="button" class="btn btn-link" data-reflex="click->TasksReflex#cancel_edit">Cancel</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

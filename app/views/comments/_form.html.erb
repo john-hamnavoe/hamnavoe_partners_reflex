@@ -1,0 +1,7 @@
+<%= form_with model: [commentable, Comment.new], local: false do |f| %>
+  <div class="input-group overflow-y-auto trix p-5 bg-white">
+    <%= f.rich_text_area :body, class: 'trix-editor', placeholder: 'Write a new comment...' %>
+    <button data-action="click->issue-comments#post" type="submit" class="btn btn-default">Save Comment</button>     
+  </div>
+
+<% end %>

@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_list: one
+  assigned_to: one
+  title: MyString
+  description: MyString
+  story_points: 1
+  is_complete: false
+  is_billable: false
+  is_archived: false
+  due_date: 2021-04-16
+  organisation: one
+  project: one  
+
+two:
+  task_list: two
+  assigned_to: two
+  title: MyString
+  description: MyString
+  story_points: 1
+  is_complete: false
+  is_billable: false
+  is_archived: false
+  due_date: 2021-04-16
+  organisation: two
+  project: two    

@@ -1,0 +1,23 @@
+<div class="flex mt-10 mx-4 flex-col" data-controller="task-lists">
+  <div class="flex items-center" >
+
+      <% if task_list %>
+        <%= form_for(task_list) do |f| %>
+          <div class="input-group">
+            <%= f.label :name, class: 'label' %>
+            <%= f.text_field :name, class: 'input', placeholder: 'Enter task list name...', required: true %>
+            <%= f.hidden_field :task_board_id, value: task_board.id %>
+          </div>
+          <div class="input-group mt-5">
+            <%= f.submit "Save", class: "btn btn-default" %>
+            <button type="button" class="btn btn-link" data-reflex="click->TaskBoardsReflex#default_reflex">Cancel</button>
+          </div>
+        <% end %>
+      <% else %>
+        <button data-reflex="click->TaskListsReflex#new" data-id="<%= task_board.id %>"> 
+        <h4 class="p-1 rounded-sm text-gray-700">+ Add Task List</h4>
+        </button>
+      <% end %>
+    
+  </div>
+</div>

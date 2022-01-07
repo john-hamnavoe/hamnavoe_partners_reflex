@@ -1,0 +1,32 @@
+<%= hover_table do %>
+  <%= table_head do %>
+    <%= table_row do %>
+      <%= table_column "Name" %>
+      <%= table_column "Owner" %>      
+      <%= table_column "Software" %>
+      <%= table_column "Version" %>
+      <%= table_column "Start Date" %>
+      <%= table_column "End Date" %>      
+      <%= table_column "Active?" %>
+      <%= table_column %>          
+    <% end %>
+  <% end %>
+  <%= table_body do %>
+    <% @projects.each do |project| %>
+      <%= table_row id: dom_id(project) do %>
+        <%= table_data project.name %>
+        <%= table_data project.owner.name.full %>
+        <%= table_data project.software %>
+        <%= table_data project.version %>
+        <%= table_data project.start_date  %>
+        <%= table_data project.end_date  %>
+        <%= table_data project.is_active  %>
+        <%= table_data do %>
+          <%= link_to edit_project_path(project.id) do %>
+            <button class="btn btn-default btn-sm"><i class="fas fa-edit"></i></button>
+          <% end %>
+        <% end %>          
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

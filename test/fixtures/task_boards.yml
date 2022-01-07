@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Org 1 Project 1 Board 1
+  is_active: false
+  organisation: one
+  project: one
+  owner: one
+
+two:
+  name: MyString
+  is_active: false
+  organisation: two
+  project: two
+  owner: two
+
+three:
+  name: Org 1 Project 2 Board 1
+  is_active: false
+  organisation: one
+  project: three
+  owner: one
+
+four:
+  name: Org 1 Project 1 Board 2
+  is_active: false
+  organisation: one
+  project: one
+  owner: one

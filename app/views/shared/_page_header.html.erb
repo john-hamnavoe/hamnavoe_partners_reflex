@@ -1,0 +1,8 @@
+<div class="bg-white border rounded shadow">
+  <div class="border-b p-3">
+    <% if local_assigns[:resource_name] %>
+      <%= link_to "#{root_path_title} - ", polymorphic_path(resource_name), class: " inline-block font-bold uppercase text-blue-600" %>
+    <% end %>
+    <h1 class=" inline-block font-bold uppercase text-gray-600"><%= title %></h1>
+  </div>
+</div>

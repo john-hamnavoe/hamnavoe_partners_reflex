@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  test_case: one
+  organisation: one
+  project: one
+  position: 1
+  title: MyString
+
+two:
+  test_case: two
+  organisation: two
+  project: two
+  position: 1
+  title: MyString

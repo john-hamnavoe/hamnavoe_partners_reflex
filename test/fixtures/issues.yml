@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  reference: MyString
+  owner: one
+  is_archived: false
+  priority_id: 1
+  project: one
+  organisation: one
+  color: MyString
+
+two:
+  title: MyString
+  reference: MyString
+  owner: two
+  is_archived: false
+  priority_id: 1
+  project: two
+  organisation: two
+  color: MyString

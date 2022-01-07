@@ -1,0 +1,22 @@
+<%= form_with(model: @task_board, local: false, html: { data: { controller: "application", action: "ajax:success->application#reload" }, autocomplete: "off" }) do |f| %>
+  <div class="w-full  bg-white mb-2">
+    <div class="w-1/2 flex flex-col bg-white shadow-lg rounded-lg overflow-hidden ml-2">
+      <div class="bg-gray-200 text-gray-700 rounded-lg mt-2 text-lg px-6 py-4">Task Board</div>
+      <div class="justify-between items-center px-6 py-4">
+        <div class="input-group">
+          <%= f.label :name, class: 'label' %>
+          <%= f.text_field :name, class: 'input', placeholder: 'Enter task_board name...', required: true %>
+          <%= f.error_for :name, class: "text-red-600" %>
+        </div>
+        <div class="flex items-start">
+          <%= f.check_box :is_active, class: "input-checkbox" %>
+          <%= f.label "Active", class: "ml-3 label" %>
+        </div>
+        <div class="input-group mt-5">
+          <%= f.submit "Save", class: "btn btn-default" %>
+          <button type="button" class="btn btn-link" data-reflex="click->TaskBoardsReflex#default_reflex">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

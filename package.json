@@ -1,0 +1,25 @@
+{
+  "name": "hamnavoe-partners-reflex",
+  "private": true,
+  "dependencies": {
+    "@rails/actioncable": "^6.0.0",
+    "@rails/actiontext": "^6.1.3-1",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "5.2.1",
+    "autoprefixer": "^9",
+    "debounced": "^0.0.5",
+    "postcss": "^7",
+    "sortablejs": "^1.13.0",
+    "stimulus": "^2.0.0",
+    "stimulus_reflex": "3.4.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "tailwindcss-stimulus-components": "^2.1.2",
+    "trix": "^1.2.0",
+    "turbolinks": "^5.2.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.2"
+  }
+}

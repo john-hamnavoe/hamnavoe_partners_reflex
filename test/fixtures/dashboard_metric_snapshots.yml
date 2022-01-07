@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organisation: one
+  dashboard_metric: one
+  date: 2021-04-05
+  value: 1
+  last_value: 1
+
+two:
+  organisation: two
+  dashboard_metric: two
+  date: 2021-04-05
+  value: 1
+  last_value: 1

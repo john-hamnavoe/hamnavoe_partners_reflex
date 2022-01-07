@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  software: MyString
+  version: MyString
+  start_date: 2021-04-05
+  is_active: false
+  end_date: 2021-04-05
+  owner: one
+  organisation: one
+
+two:
+  name: MyString
+  software: MyString
+  version: MyString
+  start_date: 2021-04-05
+  is_active: false
+  end_date: 2021-04-05
+  owner: two
+  organisation: two
+
+three:
+  name: Second Project
+  software: MyString
+  version: MyString
+  start_date: 2021-03-05
+  is_active: false
+  end_date: 2021-03-05
+  owner: one
+  organisation: one

@@ -1,0 +1,7 @@
+<%= render "shared/page_header", title: @task_board.name, root_path_title: "Task Boards", resource_name: :task_boards %>
+<div class="flex flex-1 h-screen min-h-screen bg-gray">
+  <div class="inline-flex flex-col  overflow-y-hidden">
+    <%= render "task_board_show", task_board: @task_board, task_list: @task_list %>
+  </div>
+</div>
+<%= render 'tasks/task_modal' if @task %>

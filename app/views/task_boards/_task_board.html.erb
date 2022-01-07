@@ -1,0 +1,10 @@
+      <%= table_row id: dom_id(task_board) do %>
+        <%= table_data  do %>
+          <%= link_to task_board.name, task_board_path(task_board), class: "btn btn-link"  %>
+        <% end %>
+        <%= table_data task_board.owner.name.full %>
+        <%= table_data task_board.is_active  %>
+        <%= table_data do %>
+          <button id="edit_<%= task_board.id %>" type="button" class="btn btn-default btn-sm" data-reflex="click->TaskBoardsReflex#edit" data-id="<%= task_board.id %>"><i class="fas fa-edit"></i></button>        
+        <% end %>          
+      <% end %>

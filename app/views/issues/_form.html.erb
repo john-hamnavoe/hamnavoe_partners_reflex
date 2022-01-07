@@ -1,0 +1,58 @@
+<div class="w-full grid grid-cols-3 bg-white mb-2">
+  <div class="col-span-2 flex flex-col bg-white shadow-lg rounded-lg overflow-hidden ml-2">
+    <%= form_with(model: @issue, local: false, html: { data: { controller: "application", action: "ajax:success->application#reload" }, autocomplete: "off" }) do |f| %>
+          <h1 class="bg-gray-200 text-gray-700 rounded-lg mt-2 text-lg px-6 py-4">Issue <%= @issue.id.nil? ? "" : "# #{@issue.id}" %>
+          </h1>
+          <div class="justify-between items-center px-6 py-4">
+            <div class="grid grid-cols-4 gap-4">
+              <div class="col-span-2 input-group">
+                <%= f.label :title, class: 'label' %>
+                <%= f.text_field :title, class: 'input', placeholder: 'Enter issue title...', required: true %>
+                <%= f.error_for :title, class: "text-red-600" %>
+              </div>
+              <div class="input-group">
+                <%= f.label :reference, class: 'label' %>
+                <%= f.text_field :reference, class: 'input', placeholder: 'Enter reference...' %>
+                <%= f.error_for :reference, class: "text-red-600" %>
+              </div>
+              <div class="input-group">
+                <%= f.label :priority_id, class: 'label' %>
+                <%= f.select :priority_id, options_for_select([["1-Critical",1], ["2-High",2], ["3-Medium",3], ["4-Low",4]], @issue.priority_id), { include_blank: true }, {class: 'input'} %>   
+                <%= f.error_for :priority_id, class: "text-red-600" %>                       
+              </div>           
+                        
+            </div>
+            <div class="grid grid-cols-4 gap-4">
+              <div class="input-group">
+                <%= f.label :owner_id, class: 'label' %>
+                <%= select("issue", "owner_id", users_for_owner_select, {}, {class: "input"}) %>
+                <%= f.error_for :owner_id, class: "text-red-600" %>        
+              </div>
+              <div class="input-group">
+                <%= f.label :color, class: 'label' %>
+                <%= f.select :color, options_for_select(colors_for_select, @issue.color), { include_blank: true }, {class: 'input'} %>              
+              </div> 
+            </div>
+            <div class="input-group overflow-y-auto trix">
+              <%= f.label :description, class: 'label' %>
+              <%= f.rich_text_area :description, class: 'trix-editor', placeholder: 'Enter issue description...' %>              
+            </div>      
+            <div class="flex items-start">
+              <%= f.check_box :is_archived, class: "input-checkbox" %>
+              <%= f.label "Archive", class: "ml-3 label" %>
+            </div>
+            <div class="input-group mt-5">
+              <%= f.submit "Save", class: "btn btn-default" %>
+              <button type="button" class="btn btn-link" data-reflex="click->IssuesReflex#default_reflex">Cancel</button>
+            </div>
+          </div>
+    <% end %>
+    </div>
+    <% if @issue.id.present? %>
+      <div class="col-span-1 flex flex-col bg-white shadow-lg rounded-lg ml-2">    
+          <h1 class="bg-gray-200 text-gray-700 rounded-lg mt-2 text-lg px-6 py-4">Comments</h1>
+          <%= render partial: "comments/form", locals: {commentable: @issue }%>      
+      </div>
+    <% end %>
+
+</div>

@@ -1,0 +1,15 @@
+<%= hover_table do %>
+  <%= table_head do %>
+    <%= table_row do %>
+      <%= table_column "Name" %>
+      <%= table_column "Owner" %>        
+      <%= table_column "Active?" %>
+      <%= table_column %>          
+    <% end %>
+  <% end %>
+  <%= table_body do %>
+    <% @task_boards.each do |task_board| %>
+      <%= render task_board %>
+    <% end %>
+  <% end %>
+<% end %>

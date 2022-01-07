@@ -1,0 +1,18 @@
+
+
+<div data-controller="task_boards"  id='task_boards' data-reflex-root='#task_boards'>
+  <%= render "shared/page_header", title: "Task Boards" %>
+  <div class="shadow mt-2 mb-4">
+    <div>
+      <%= render "form" if @task_board %>
+      <%= render 'shared/index_page_top', edit_instance: @task_board, reflex: "TaskBoardsReflex", query: @query, hide_new: false %>
+      <div>
+        <%= render "table", task_boards: @task_boards, reflex_name: "TaskBoardsReflex" %>
+      </div>
+    </div>
+    <div>
+      <%= render "shared/index_page_paginator", pagy: @pagy, reflex: "TaskBoardsReflex" %>
+    </div>
+  </div>
+</div>
+
