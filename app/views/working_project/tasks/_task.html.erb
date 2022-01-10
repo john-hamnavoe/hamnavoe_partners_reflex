@@ -1,0 +1,6 @@
+      <%= table_row id: dom_id(task) do %>
+        <%= table_data task.position %>
+        <%= table_data task.title %>
+        <%= table_data task.story_points %>
+        <%= table_data task.is_complete  %>       
+      <% end %>

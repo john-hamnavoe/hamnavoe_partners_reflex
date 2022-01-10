@@ -1,0 +1,15 @@
+<%= hover_table do %>
+  <%= table_head do %>
+    <%= table_row do %>
+      <%= table_column "Position" %>
+      <%= table_column "Title" %>
+      <%= table_column "Points" %>        
+      <%= table_column "Complete?" %>    
+    <% end %>
+  <% end %>
+  <%= table_body do %>
+    <% tasks.each do |task| %>
+      <%= render task %>
+    <% end %>
+  <% end %>
+<% end %>

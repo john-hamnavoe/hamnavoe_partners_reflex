@@ -1,0 +1,17 @@
+
+
+<div data-controller="tasks"  id='tasks' data-reflex-root='#tasks'>
+  <%= render "shared/page_header", title: "#{current_user.current_project.name} Tasks" %>
+  <div class="shadow mt-2 mb-4">
+    <div>
+      <%= render 'shared/index_page_top', edit_instance: nil, reflex: "ApplicationReflex", query: @query, hide_new: true %>
+      <div>
+        <%= render "table", tasks: @tasks, reflex_name: "ApplicationReflex" %>
+      </div>
+    </div>
+    <div>
+      <%= render "shared/index_page_paginator", pagy: @pagy, reflex: "ApplicationReflex" %>
+    </div>
+  </div>
+</div>
+

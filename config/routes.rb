@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   resources :organisation_memberships, only: [:destroy, :index, :create, :update]
   resources :organisations, only: [:new, :edit, :update, :create]
   resources :projects, only: [:new, :edit, :update, :create, :index]
+
+  namespace :working_project do
+    resources :tasks, only: [:index]
+  end
+
   resources :notification_all_as_reads, only: [:create]
   resources :notifications, only: [:index]
 
