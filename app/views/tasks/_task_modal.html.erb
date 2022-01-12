@@ -5,7 +5,8 @@
       <!-- Modal Card -->
       <div class="m-1 bg-white rounded shadow">
         <div class="p-8">
-          <%= form_with model: @task, html: { data: { controller: "application", action: "ajax:success->application#reload" } } do |f| %>
+        <!--  url: working_project_task_path(@task), -->
+          <%= form_with model: @task, url: url, local: false, html: { data: { controller: "application", action: "ajax:success->application#reload" }, autocomplete: "off" } do |f| %>
             <div class="input-group">
               <%= f.label :title, class: 'label' %>
               <%= f.text_field :title, class: 'input', placeholder: 'Enter task title...', required: true %>   

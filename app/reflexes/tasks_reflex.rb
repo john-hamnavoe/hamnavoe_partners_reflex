@@ -14,11 +14,6 @@ class TasksReflex < ApplicationReflex
     @task = nil
   end
 
-  def update
-    value = element[:value]
-    repo.update(element.dataset[:id], { name: value })
-  end
-
   private
 
   # remember that variables carry through to controller so if make a variable then name appropriately to not mess with the controller

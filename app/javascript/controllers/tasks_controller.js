@@ -20,4 +20,10 @@ export default class extends ApplicationController {
     super.connect();
     // add your code here, if applicable
   }
+
+  cancelEdit (event) {
+    console.log("canceledit")
+    if (event.type === 'keyup' && !['Escape', 'Esc'].includes(event.key)) return
+    this.stimulate('TasksReflex#cancel_edit')
+  }    
 }

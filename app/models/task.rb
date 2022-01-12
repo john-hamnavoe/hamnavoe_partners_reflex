@@ -14,10 +14,6 @@ class Task < ApplicationRecord
   private
 
   def broadcast_board
-    cable_ready["morph"].morph(
-      selector: dom_id(task_list.task_board) + "_show",
-      html: render(partial: "task_boards/task_board_show", locals: { task_board: task_list.task_board, task_list: nil })
-    )
-    cable_ready.broadcast
+    StreamTaskBoardJob.perform_now(task_list.task_board, self)
   end
 end

@@ -16,7 +16,7 @@ class TaskNewTest < ActionDispatch::IntegrationTest
     assert_difference "Task.count", + 1 do
       post_task
     end
-    assert_redirected_to task_board_path(@task_list.task_board)
+    assert_response(204)
     @saved_task = Task.find_by(title: "TaskNewTest")
     assert_save @task, @saved_task, %w[organisation_id project_id position], "Expect to save organisation and project set based on user"
     assert_organisation(@saved_task, @bob.current_organisation)

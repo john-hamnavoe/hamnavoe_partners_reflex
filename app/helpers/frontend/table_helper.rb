@@ -56,21 +56,8 @@ module Frontend
     end
 
     def table_check_box_data(value = nil, add_class: nil, add_style: nil, colspan: nil, data: nil, title: nil, &block)
-      content_tag(:td, nil, colspan: colspan, data: data, title: title, class: "text-center #{add_class}", style: add_style) do
-        content_tag(:i, nil, class: "fas fa-check-circle text-blue-500", &block) if value
-      end
-    end
-
-    def table_status_data(checked = nil, actual = nil, add_class: nil, add_style: nil, colspan: nil, data: nil, title: nil, &block)
-      icon_class = if checked && actual.zero?
-                     "fas fa-times-circle text-yellow-400"
-                   elsif checked && actual.positive?
-                     "fas fa-check-circle text-green-500"
-                   else
-                     "fas fa-question-circle text-red-500"
-                   end
-      content_tag(:td, nil, colspan: colspan, data: data, title: title, class: "text-lg text-center #{add_class}", style: add_style) do
-        content_tag(:i, nil, class: icon_class, &block)
+      content_tag(:td, nil, colspan: colspan, data: data, title: title, class: "text-left #{add_class}", style: add_style) do
+        content_tag(:i, nil, class: "pl-2 fas fa-check-circle text-blue-500", &block) if value
       end
     end
 

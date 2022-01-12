@@ -3,4 +3,5 @@
       <%= render 'task_lists/task_list', task_list: task_list %>
     <% end %>
     <%= render 'task_lists/new', task_board: task_board, task_list: task_list %>
+    <%= render 'tasks/task_modal', url: nil if task %>
 </div>

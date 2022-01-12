@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   def create
     @task = repo.create(task_params)
     if @task.valid?
-      redirect_to task_board_path(@task.task_list.task_board)
+      head :no_content
     else
       respond_to do |format|
         format.html { broadcast_errors @task, task_params }
@@ -19,8 +19,9 @@ class TasksController < ApplicationController
 
   def update
     @task = repo.update(params[:id], task_params)
+
     if @task.valid?
-      redirect_to task_board_path(@task.task_list.task_board)
+      head :no_content
     else
       respond_to do |format|
         format.html { broadcast_errors @task, task_params }

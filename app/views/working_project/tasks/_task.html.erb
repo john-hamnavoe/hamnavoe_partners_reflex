@@ -1,6 +1,12 @@
-      <%= table_row id: dom_id(task) do %>
-        <%= table_data task.position %>
-        <%= table_data task.title %>
-        <%= table_data task.story_points %>
-        <%= table_data task.is_complete  %>       
-      <% end %>
+<%= table_row id: dom_id(task)+"_row" do %>
+  <%= table_data task.position %>
+  <%= table_data task.task_list.task_board.name %>
+  <%= table_data task.task_list.name %>
+  <%= table_data task.title %>
+  <%= table_data task.story_points %>
+  <%= table_check_box_data task.is_billable  %>    
+  <%= table_check_box_data task.is_complete  %>
+  <%= table_data do %>
+    <button id="edit_<%= task.id %>" type="button" class="btn btn-default btn-sm" data-reflex="click->TasksReflex#edit" data-id="<%= task.id %>"><i class="fas fa-edit"></i></button>        
+  <% end %>        
+<% end %>

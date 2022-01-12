@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:new, :edit, :update, :create, :index]
 
   namespace :working_project do
-    resources :tasks, only: [:index]
+    resources :tasks, only: [:index, :update]
   end
 
   resources :notification_all_as_reads, only: [:create]
