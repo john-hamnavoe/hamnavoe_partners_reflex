@@ -24,10 +24,7 @@ class TaskBoardsController < ApplicationController
     if @task_board.valid?
       redirect_to task_boards_path
     else
-      respond_to do |format|
-        format.html { broadcast_errors @task_board, task_board_params }
-        format.json { render json: @task_board.errors.to_json, status: :unprocessable_entity }
-      end
+      broadcast_errors @task_board, task_board_params
     end
   end
 
@@ -38,10 +35,7 @@ class TaskBoardsController < ApplicationController
     if @task_board.valid?
       redirect_to task_boards_path
     else
-      respond_to do |format|
-        format.html { broadcast_errors @task_board, task_board_params }
-        format.json { render json: @task_board.errors.to_json, status: :unprocessable_entity }
-      end
+      broadcast_errors @task_board, task_board_params
     end
   end
 

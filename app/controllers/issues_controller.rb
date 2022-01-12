@@ -27,10 +27,7 @@ class IssuesController < ApplicationController
     if @issue.valid?
       redirect_to issues_path
     else
-      respond_to do |format|
-        format.html { broadcast_errors @issue, issue_params }
-        format.json { render json: @issue.errors.to_json, status: :unprocessable_entity }
-      end
+      broadcast_errors @issue, issue_params
     end
   end
 
@@ -41,10 +38,7 @@ class IssuesController < ApplicationController
     if @issue.valid?
       redirect_to issues_path
     else
-      respond_to do |format|
-        format.html { broadcast_errors @issue, issue_params }
-        format.json { render json: @issue.errors.to_json, status: :unprocessable_entity }
-      end
+      broadcast_errors @issue, issue_params
     end
   end
 

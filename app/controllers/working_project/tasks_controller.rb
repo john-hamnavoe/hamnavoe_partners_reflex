@@ -21,10 +21,7 @@ class WorkingProject::TasksController < ApplicationController
     if @task.valid?
       redirect_to working_project_tasks_path
     else
-      respond_to do |format|
-        format.html { broadcast_errors @task, task_params }
-        format.json { render json: @task.errors.to_json, status: :unprocessable_entity }
-      end
+      broadcast_errors @task, task_params 
     end
   end
 
