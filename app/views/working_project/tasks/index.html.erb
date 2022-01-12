@@ -5,7 +5,7 @@
   <div class="shadow mt-2 mb-4">
     <div>
       <%= render 'shared/index_page_top', edit_instance: nil, reflex: "TasksReflex", query: @query, hide_new: true %>
-      <div>
+      <div data-controller="working-project-tasks">
         <%= render "table", tasks: @tasks, reflex_name: "TasksReflex" %>
       </div>
     </div>

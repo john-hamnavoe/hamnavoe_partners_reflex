@@ -10,18 +10,16 @@ class StreamTaskBoardJob < ApplicationJob
   private
 
   def broadcast_board(task_board)
-    cable_ready["morph"].outer_html(
+    cable_ready[TaskBoardShowChannel].outer_html(
       selector: dom_id(task_board) + "_show",
       html: ApplicationController.render(partial: "task_boards/task_board_show", locals: { task_board: task_board, task_list: nil, task: nil })
-    )
-    cable_ready.broadcast
+    ).broadcast_to(task_board)
   end
 
   def broadcast_row(task)
-    cable_ready["morph"].morph(
+    cable_ready[WorkingProjectTasksChannel].morph(
       selector: dom_id(task) + "_row",
       html: ApplicationController.render(partial: "working_project/tasks/task", locals: { task: task })
-    )
-    cable_ready.broadcast
+    ).broadcast
   end
 end
