@@ -10,6 +10,7 @@ class Task < ApplicationRecord
   after_commit :broadcast_board
 
   validates :title, presence: true, length: { maximum: 100 }
+  validates :story_points, numericality: { greater_than: 0.0 }
 
   private
 

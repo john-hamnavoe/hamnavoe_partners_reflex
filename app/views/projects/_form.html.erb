@@ -1,24 +1,29 @@
-<%= form_for(@project) do |f| %>
+<%= form_for(@project, remote: true) do |f| %>
 <div class="grid w-full">
       <div class="input-group">
         <%= f.label :name, class: 'label' %>
         <%= f.text_field :name, class: 'input', placeholder: 'Enter project name...', required: true %>
+        <%= f.error_for :name, class: "text-red-600" %>        
       </div>
       <div class="input-group">
         <%= f.label :software, class: 'label' %>
         <%= f.text_field :software, class: 'input', placeholder: 'Enter the software name here...' %>
+        <%= f.error_for :software, class: "text-red-600" %>            
       </div>
       <div class="input-group">
         <%= f.label :version, class: 'label' %>
         <%= f.text_field :version, class: 'input', placeholder: 'Enter the software version here...' %>
+        <%= f.error_for :version, class: "text-red-600" %>     
       </div> 
       <div class="input-group w-1/2">
         <%= f.label :start_date, class: 'label' %>
         <%= f.date_field :start_date, class: 'input', placeholder: 'Enter the software version here...' %>
+        <%= f.error_for :start_date, class: "text-red-600" %>        
       </div>   
       <div class="input-group w-1/2">
         <%= f.label :end_date, class: 'label' %>
         <%= f.date_field :end_date, class: 'input', placeholder: 'Enter the software version here...' %>
+        <%= f.error_for :end_date, class: "text-red-600" %>         
       </div>         
       <div class="flex items-start">
         <%= f.check_box :is_active, class: "input-checkbox" %>

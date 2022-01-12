@@ -9,21 +9,25 @@
           <%= form_with model: @task, url: url, local: false, html: { data: { controller: "application", action: "ajax:success->application#reload" }, autocomplete: "off" } do |f| %>
             <div class="input-group">
               <%= f.label :title, class: 'label' %>
-              <%= f.text_field :title, class: 'input', placeholder: 'Enter task title...', required: true %>   
+              <%= f.text_field :title, class: 'input', placeholder: 'Enter task title...', required: true %>
+              <%= f.error_for :title, class: "text-red-600" %>
               <%= f.hidden_field :task_list_id %>                         
             </div>
             <div class="input-group">
               <%= f.label :color, class: 'label' %>
               <%= f.select :color, options_for_select(colors_for_select, @task.color), { include_blank: true }, {class: 'input'} %>              
+              <%= f.error_for :color, class: "text-red-600" %>
             </div>               
             <div class="grid grid-cols-2">
               <div class="input-group pr-2">
                 <%= f.label :story_points, class: 'label' %>
-                <%= f.number_field :story_points, class: 'input', placeholder: 'Enter task story points...' %>              
+                <%= f.number_field :story_points, class: 'input', placeholder: 'Enter task story points...' %> 
+                <%= f.error_for :story_points, class: "text-red-600" %>                             
               </div>
               <div class="input-group pl-2">
                 <%= f.label :due_date, class: 'label' %>
                 <%= f.date_field :due_date, class: 'input', placeholder: 'Enter task due date...' %>    
+                <%= f.error_for :due_date, class: "text-red-600" %>                  
               </div>
             </div>        
             <div class="grid grid-cols-2 mb-1">              

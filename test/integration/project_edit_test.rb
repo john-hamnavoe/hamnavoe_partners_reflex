@@ -28,7 +28,9 @@ class ProjectEditTest < ActionDispatch::IntegrationTest
     assert_no_difference "Project.count" do
       put_project
     end
-    assert_template "edit"
+    assert_response :success
+    project = assigns(:project)
+    assert_not project.valid?
     @saved_project = Project.find_by(id: @project.id)
     assert_no_save @project, @saved_project, updated_fields
   end

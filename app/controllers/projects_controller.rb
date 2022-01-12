@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
     if @project.valid?
       redirect_to projects_path
     else
-      render "new"
+      broadcast_errors @project, project_params
     end
   end
 
@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
     if @project.valid?
       redirect_to projects_path
     else
-      render "edit"
+      broadcast_errors @project, project_params
     end
   end
 

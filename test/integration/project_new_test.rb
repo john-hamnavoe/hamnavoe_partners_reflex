@@ -27,9 +27,11 @@ class ProjectNewTest < ActionDispatch::IntegrationTest
     assert_no_difference "Project.count" do
       post_project
     end
-    assert_template "new"
-    @saved_project = Project.find_by(name: "ProjectNewTest")
-    assert_nil @saved_project
+    assert_response :success
+    project = assigns(:project)
+    assert_not project.valid?
+    saved_project = Project.find_by(name: "a" * 51)
+    assert_nil saved_project
   end
 
   private
