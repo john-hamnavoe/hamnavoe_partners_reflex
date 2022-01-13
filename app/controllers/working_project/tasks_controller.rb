@@ -21,18 +21,18 @@ class WorkingProject::TasksController < ApplicationController
     if @task.valid?
       redirect_to working_project_tasks_path
     else
-      broadcast_errors @task, task_params 
+      broadcast_errors @task, task_params
     end
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:title, :task_list_id, :description, :color, :story_points, :position, :due_date, :is_complete, :is_billable, :is_archived)
+    params.require(:task).permit(:title, :task_list_id, :assigned_to_id, :description, :color, :story_points, :position, :due_date, :is_complete, :is_billable, :is_archived)
   end
 
   def permitted_order_columns
-    ["title", "story_points", "due_date", "position", "is_complete", "is_billable", "task_boards.name", "task_lists.name"]
+    ["title", "story_points", "due_date", "position", "is_complete", "is_billable", "task_boards.name", "task_lists.name", "users.last_name"]
   end
 
   def repo

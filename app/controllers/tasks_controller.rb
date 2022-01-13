@@ -35,7 +35,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :task_list_id, :description, :color, :story_points, :position, :due_date, :is_complete, :is_billable, :is_archived)
+    params.require(:task).permit(:title, :task_list_id, :assigned_to_id, :description, :color, :story_points, :position, :due_date, :is_complete, :is_billable, :is_archived)
   end
 
   def repo

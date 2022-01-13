@@ -3,6 +3,8 @@
   <%= table_data task.task_list.task_board.name %>
   <%= table_data task.task_list.name %>
   <%= table_data task.title %>
+  <% assigned = if task.assigned_to.present? then task.assigned_to.name.full else "" end %>
+  <%= table_data assigned %>  
   <%= table_data task.story_points %>
   <%= table_data task.due_date %>  
   <%= table_check_box_data task.is_billable  %>    
