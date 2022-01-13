@@ -2,12 +2,13 @@
   <%= table_head do %>
     <%= table_row do %>
       <%= table_column "Position" %>
-      <%= table_column "Board" %>
-      <%= table_column "List" %>
-      <%= table_column "Title" %>
-      <%= table_column "Points" %>        
-      <%= table_column "Billable?" %>         
-      <%= table_column "Complete?" %>    
+      <%= sortable_tr "task_boards.name", "ApplicationReflex","Board"%> 
+      <%= sortable_tr "task_lists.name", "ApplicationReflex","List"%> 
+      <%= sortable_tr "title", "ApplicationReflex" %>
+      <%= sortable_tr "story_points", "ApplicationReflex", "Points"%>    
+      <%= sortable_tr "due_date", "ApplicationReflex", "Due"%>              
+      <%= sortable_tr "is_billable", "ApplicationReflex", "Billable?" %>         
+      <%= sortable_tr "is_complete", "ApplicationReflex", "Complete?" %>    
       <%= table_column %>       
     <% end %>
   <% end %>

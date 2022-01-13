@@ -32,7 +32,7 @@ class WorkingProject::TasksController < ApplicationController
   end
 
   def permitted_order_columns
-    %w[title story_points due_date position is_complete is_billable]
+    ["title", "story_points", "due_date", "position", "is_complete", "is_billable", "task_boards.name", "task_lists.name"]
   end
 
   def repo
