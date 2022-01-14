@@ -1,0 +1,19 @@
+
+  <div class="bg-white border rounded shadow p-2">
+    <div class="flex flex-row items-center">
+      <div class="flex-shrink pr-4">
+        <div class="rounded p-3 bg-green-500 text-white"><i class="fas fa-tasks fa-2x"></i></div>
+      </div>
+      <div class="flex-1 text-right md:text-left">
+        <h5 class="font-bold uppercase text-gray-500 mb-2">Active Tasks Per Project</h5>
+        <div class="grid grid-cols-3 gap-2">
+          <% summary.each do |key, value| %>
+            <div><%= key %></div>
+            <div><p class="shadow-lg w-8 text-center"><%= value %></p></div>
+            <div></div>
+          <% end%>
+        </div>
+      </div>
+    </div>
+  </div>
+

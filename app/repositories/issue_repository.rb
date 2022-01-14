@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class IssueRepository < ApplicationRepository
-  def all(args, params, order_by, direction)
-    query = Issue.with_rich_text_description.eager_load(:owner).where(organisation: organisation, project: project).where(args)
+  def all(args, params, order_by, direction, restrict_by_project = true)
+    query = Issue.with_rich_text_description.eager_load([:owner, :project]).where(organisation: organisation).where(args)
+    query = query.where(project: project) if restrict_by_project
     query = query.where("cast(issues.id as varchar) LIKE :keyword OR lower(title) LIKE :keyword OR lower(reference) LIKE :keyword", keyword: "%#{params[:keywords].downcase}%") if params && params[:keywords].present?
     query = query.where(is_archived: params[:is_archived]) if params && params[:is_archived].present?
 

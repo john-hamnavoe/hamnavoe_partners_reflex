@@ -7061,6 +7061,11 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
+stimulus-content-loader@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/stimulus-content-loader/-/stimulus-content-loader-4.0.0.tgz#472bd46561f66ac764c5fdcb0490b8ed9f4dd834"
+  integrity sha512-lmzrBvDwWE2As/BPjI6+xtZeO1EOvS0550HRwgrbNB0Obv04WgplPf4HvyK2jcc5vy8FKIDE+gLVXx0CRt6GEQ==
+
 stimulus@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-2.0.0.tgz#713c8b91a72ef90914b90955f0e705f004403047"

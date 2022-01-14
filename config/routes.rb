@@ -46,5 +46,9 @@ Rails.application.routes.draw do
     resources :current_projects, only: [:update]
   end
 
+  namespace :dashboard_widgets do
+    resources :active_tasks, only: [:index]
+    resources :active_issues, only: [:index]    
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

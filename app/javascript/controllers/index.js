@@ -7,6 +7,7 @@ import StimulusReflex from 'stimulus_reflex'
 import consumer from '../channels/consumer'
 import controller from '../controllers/application_controller'
 import debounced from 'debounced' 
+import ContentLoader from "stimulus-content-loader"
 
 debounced.initialize()
 
@@ -23,5 +24,6 @@ application.register('tabs', Tabs)
 application.register('popover', Popover)
 application.register('toggle', Toggle)
 application.register('slideover', Slideover)
+application.register('content-loader', ContentLoader)
 
 application.consumer = consumer
