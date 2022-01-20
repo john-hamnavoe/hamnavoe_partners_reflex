@@ -7,7 +7,7 @@
             <div class="grid grid-cols-4 gap-4">
               <div class="col-span-2 input-group">
                 <%= f.label :title, class: 'label' %>
-                <%= f.text_field :title, class: 'input', placeholder: 'Enter issue title...', required: true %>
+                <%= f.text_field :title, class: 'input', placeholder: 'Enter issue title...', required: true, autofocus: true%>
                 <%= f.error_for :title, class: "text-red-600" %>
               </div>
               <div class="input-group">
@@ -43,15 +43,15 @@
             </div>
             <div class="input-group mt-5">
               <%= f.submit "Save", class: "btn btn-default" %>
-              <button type="button" class="btn btn-link" data-reflex="click->IssuesReflex#default_reflex">Cancel</button>
+              <%= link_to "Cancel", issues_path, class: "btn btn-link" %>
+
             </div>
           </div>
     <% end %>
     </div>
     <% if @issue.id.present? %>
-      <div class="col-span-1 flex flex-col bg-white shadow-lg rounded-lg ml-2">    
-          <h1 class="bg-gray-200 text-gray-700 rounded-lg mt-2 text-lg px-6 py-4">Comments</h1>
-          <%= render partial: "comments/form", locals: {commentable: @issue }%>      
+      <div data-controller="issue-comments" data-issue-comments-id-value="<%= @issue.id %>" id="<%= dom_id(@issue)+"_comments" %>">
+        <%= render partial: "comments/comment_control", locals: {commentable: @issue }%>      
       </div>
     <% end %>
 

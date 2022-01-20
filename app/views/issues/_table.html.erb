@@ -1,16 +1,15 @@
-
 <%= hover_table do %>
   <%= table_head do %>
     <%= table_row do %>
-      <%= table_column %>      
-      <%= sortable_tr "id", "IssuesReflex","#"%>    
+      <%= table_column %>
+      <%= sortable_tr "id", "IssuesReflex","#"%>
       <%= sortable_tr "title", "IssuesReflex" %>
-      <%= sortable_tr "reference", "IssuesReflex" %>   
-      <%= table_column "Description" %>       
-      <%= sortable_tr "owner", "IssuesReflex" %>        
+      <%= sortable_tr "reference", "IssuesReflex" %>
+      <%= table_column "Description" %>
+      <%= sortable_tr "owner", "IssuesReflex" %>
       <%= sortable_tr "priority_id", "IssuesReflex", "Priority" %>
-      <%= table_column "Archived?" if include_archived %>      
-      <%= table_column %>          
+      <%= table_column "Archived?" if include_archived %>
+      <%= table_column %>
     <% end %>
   <% end %>
   <%= table_body do %>
@@ -21,14 +20,16 @@
         <% end %>
         <%= table_data issue.id %>
         <%= table_data issue.title %>
-        <%= table_data issue.reference %>   
+        <%= table_data issue.reference %>
         <%= table_data issue.description.to_plain_text.truncate(60, seperator: " ") if  issue.description %>
         <%= table_data issue.owner.name.full %>
         <%= table_data priority_text(issue.priority_id)  %>
         <%= table_check_box_data issue.is_archived if include_archived %>
         <%= table_data do %>
-          <button id="edit_<%= issue.id %>" type="button" class="btn btn-default btn-sm" data-reflex="click->IssuesReflex#edit" data-id="<%= issue.id %>"><i class="fas fa-edit"></i></button>        
-        <% end %>          
+          <%= link_to edit_issue_path(issue.id) do %>
+            <button class="btn btn-default btn-sm"><i class="fas fa-edit"></i></button>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

@@ -26,7 +26,7 @@ class IssueRepository < ApplicationRepository
   end
 
   def load(id)
-    Issue.find_by(id: id, organisation: organisation, project: project)
+    Issue.eager_load([comments: [:rich_text_body, :user]]).order("comments.created_at" => "desc").find_by(id: id, organisation: organisation, project: project)
   end
 
   private

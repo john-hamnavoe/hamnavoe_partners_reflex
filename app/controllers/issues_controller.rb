@@ -42,6 +42,10 @@ class IssuesController < ApplicationController
     end
   end
 
+  def edit
+    @issue = repo.load(params[:id])
+  end
+
   private
 
   def issue_params

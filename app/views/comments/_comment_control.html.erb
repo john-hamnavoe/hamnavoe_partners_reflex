@@ -1,0 +1,15 @@
+      <div class="col-span-1 flex flex-col bg-white shadow-lg rounded-lg ml-2">    
+          <h1 class="bg-gray-200 text-gray-700 rounded-lg mt-2 text-lg px-6 py-4">Comments</h1>
+          <% unless doing_edit ||= false %>
+            <%= render partial: "comments/form", locals: {commentable: commentable, comment: Comment.new }%>
+          <% end %>
+          <div class="px-5 bg-white">
+            <% commentable.comments.each do |comment| %>
+              <% if local_assigns[:edit_comment] == comment %>
+                <%= render partial: "comments/form", locals: {commentable: commentable, comment: edit_comment }%>
+              <% else %>
+                <%= render comment, doing_edit: local_assigns[:doing_edit] %>
+              <% end %>
+            <% end %>
+          </div>
+      </div>

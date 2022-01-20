@@ -1,7 +1,13 @@
-<%= form_with model: [commentable, Comment.new], local: false do |f| %>
-  <div class="input-group overflow-y-auto trix p-5 bg-white">
-    <%= f.rich_text_area :body, class: 'trix-editor', placeholder: 'Write a new comment...' %>
-    <button data-action="click->issue-comments#post" type="submit" class="btn btn-default">Save Comment</button>     
+<%= form_with model: [commentable, comment], remote: true, data: { controller: "application", reflex: "submit->CommentsReflex#submit", id: comment.id } do |f| %>
+  <div id="blank-toolbar" hidden></div>
+  <div class="input-group overflow-y-auto trix p-5 bg-white" data-issue-comments-target=<%= comment.id.nil? ? "nil" : "editor"%>>
+    <%= f.rich_text_area :body, class: 'trix-editor', placeholder: 'Write a new comment...', toolbar:"blank-toolbar", autofocus: comment.id.present? %>
+    <div class="input-group pt-2">
+      <% button_label = comment.id.nil? ? "Add Comment" : "Update Comment" %>
+      <button type="submit" class="btn btn-default"><%= button_label %></button>
+      <% if comment.id.present? %>
+        <button type="button" class="btn btn-link" data-reflex="click->CommentsReflex#cancel_edit" data-id=<%= comment.id %>>Cancel</button>
+      <% end %>
+    </div>
   </div>
-
 <% end %>

@@ -1,0 +1,19 @@
+<div id=<%= "previous_comment_#{comment.id}"%> >
+<div class="flex justify-between mb-1">
+  <div class="text-grey-darkest leading-normal text-lg trix-content">
+    <%= comment.body %>
+  </div>
+  <% unless doing_edit ||= false %>
+    <% if current_user == comment.user %>
+      <button id="edit_<%= comment.id %>" type="button" class="ml-2 mt-1 mb-auto text-blue-600 text-sm" data-reflex="click->CommentsReflex#edit" data-id="<%= comment.id %>">Edit</button>      
+    <% end %>
+  <% end %>
+</div>
+<div class="text-grey-dark leading-normal text-sm pb-2">
+    <p><%= comment.user.name %> <span class="mx-1 text-xs">&bull;</span> <%= comment.created_at.to_formatted_s(:short) %> <span class="mx-1 text-xs">&bull;</span>
+     <% if current_user == comment.user %>
+      <button id="delete_<%= comment.id %>" type="button" class="ml-2 mt-1 mb-auto text-red-500 text-sm" data-reflex="click->CommentsReflex#delete" data-id="<%= comment.id %>">Delete</button>      
+    <% end %>   
+    </p> 
+</div>
+</div>

@@ -140,15 +140,6 @@ ActiveRecord::Schema.define(version: 2021_06_10_095432) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "issue_comments", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "issue_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["issue_id"], name: "index_issue_comments_on_issue_id"
-    t.index ["user_id"], name: "index_issue_comments_on_user_id"
-  end
-
   create_table "issues", force: :cascade do |t|
     t.string "title"
     t.string "reference"
@@ -304,8 +295,6 @@ ActiveRecord::Schema.define(version: 2021_06_10_095432) do
   add_foreign_key "grid_view_columns", "grid_views"
   add_foreign_key "grid_views", "grids"
   add_foreign_key "grid_views", "users"
-  add_foreign_key "issue_comments", "issues"
-  add_foreign_key "issue_comments", "users"
   add_foreign_key "issues", "organisations"
   add_foreign_key "issues", "projects"
   add_foreign_key "issues", "users", column: "owner_id"

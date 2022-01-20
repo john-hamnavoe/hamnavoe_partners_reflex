@@ -1,7 +1,7 @@
 %focus-style {
-  @apply shadow outline-none border-gray-500;
+  @apply shadow outline-none border-indigo-500;
 
-  box-shadow: 0 0 0 0.2rem theme("colors.gray.200");
+  box-shadow: 0 0 0 0.2rem theme("colors.indigo.200");
   background-clip: padding-box;
 }
 

@@ -6,6 +6,6 @@ class Comment < ApplicationRecord
   has_rich_text :body
 
   def comments
-    Comment.where(commentable: commentable, parent_id: id)
+    Comment.eager_load([:rich_text_body, :user]).where(commentable: commentable, parent_id: id)
   end
 end

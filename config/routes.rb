@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     patch "move"
   end
 
-  resources :issues, only: [:update, :create, :index] do
+  resources :issues, only: [:edit, :update, :create, :index] do
     resources :comments, module: :issues
   end
 
